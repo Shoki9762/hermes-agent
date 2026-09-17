@@ -738,7 +738,9 @@ def resolve_skill_config_values(config_vars: List[Dict[str, Any]]) -> Dict[str, 
     return resolved
 
 
-SKILL_PROMPT_DESC_LIMIT = 60
+SKILL_PROMPT_DESC_LIMIT = 160  # measured knee on a 229-skill roster: rescues mid-length
+# descriptions (61-160 chars) that truncated to uselessness at 60; trigger-catalog skills
+# (200+ chars, mostly OMH) stay capped, keeping the index at ~26K chars (~6.5K tokens).
 
 
 def _normalize_skill_description(frontmatter: Dict[str, Any]) -> str:
